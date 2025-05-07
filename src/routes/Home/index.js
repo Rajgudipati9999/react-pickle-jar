@@ -1,7 +1,20 @@
+// import { useState } from "react";
 import "./index.css";
 import { Link } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 function Home() {
+// const {navigate} = useNavigate('')
+// const [isMove,setMove] = useState(false)
+
+// // console.log(useNavigate)
+// const routeChange  = ()=> {
+//   setMove(true)
+// }
+
+// if (isMove) {
+//   return navigate('/products')
+// }
   return (
     <div className="home-container">
       <div className="home-banner">
@@ -13,6 +26,9 @@ function Home() {
           </button>
         </Link>
       </div>
+      {/* <div>
+        <img src='myposter.png' alt="poster" className="wall-poster" loading="lazy"/>
+      </div> */}
     </div>
   );
 }

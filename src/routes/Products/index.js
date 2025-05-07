@@ -56,7 +56,7 @@ function Products() {
           />
         </div>
 
-        {/* <select
+        <select
           className="sort-select"
           value={sortBy}
           onChange={e => setSortBy(e.target.value)}
@@ -64,7 +64,7 @@ function Products() {
           <option value="">Sort by</option>
           <option value="price-high">Price (Low to High)</option>
           <option value="price-low">Price (High to Low)</option>
-        </select> */}
+        </select>
       </div>
     <h2 className="page-title">Non Veg Pickles</h2>
      {loading ? <p>Loading...</p> :  <div className="product-list">
