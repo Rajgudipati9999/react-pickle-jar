@@ -28,15 +28,3 @@
   color: #66bb6a;
 }
 
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .navbar-links {
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 10px;
-  }
-}
