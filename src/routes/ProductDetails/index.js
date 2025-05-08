@@ -1,21 +1,24 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState ,useContext} from 'react'
 import { useParams } from 'react-router-dom'
+import CartContext from '../../context/CartContext'
 import './index.css'
 
 function ProductDetails() {
   const { id } = useParams()
   const [product, setProduct] = useState(null)
-
+  const {setCart} = useContext(CartContext)
+  console.log(product)
   useEffect(() => {
     // Simulate fetching product by ID
-    const dummyProduct = {
-      id,
-      name: 'Spicy Mango Pickle',
-      description: 'Traditional spicy mango pickle made with love and organic ingredients.',
-      price: 120,
-      image: 'https://res-console.cloudinary.com/dx8rhno8y/thumbnails/v1/image/upload/v1744713387/Y2hpY2tlbmJvbmVsZXNzX3dpeWYxag==/drilldown',
-    }
-    setProduct(dummyProduct)
+   const fetchProduct = async () => {
+      const response = await fetch(`https://picklejar-backend.onrender.com/api/products/${id}`)
+      if (!response.ok) {
+        throw new Error ('Failed to fetch product')
+      }
+      const data = await response.json()
+      setProduct(data)
+   }
+   fetchProduct()
   }, [id])
 
   const handleAddToCart = () => {

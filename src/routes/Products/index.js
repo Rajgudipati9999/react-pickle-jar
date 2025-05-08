@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState,useEffect} from 'react'
 import ProductCard from '../../components/ProductCard'
 import './index.css'
 import { FaSearch } from 'react-icons/fa'
@@ -9,8 +9,6 @@ function Products() {
 
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  console.log(products)
   
   useEffect(() => {
     // Replace with your actual API URL
