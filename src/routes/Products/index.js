@@ -35,11 +35,11 @@ function Products() {
     .filter(product =>
       product.name.toLowerCase().includes(searchTerm.toLowerCase())
     )
-    .sort((a, b) => {
-      if (sortBy === 'price') return a.price - b.price
-      if (sortBy === 'name') return a.name.localeCompare(b.name)
-      return 0
-    })
+    // .sort((a, b) => {
+    //   if (sortBy === 'price') return a.price - b.price
+    //   if (sortBy === 'name') return a.price - b.price
+    //   return 0
+    // })
 
   return (
     <div className="products-page">
@@ -54,15 +54,15 @@ function Products() {
           />
         </div>
 
-        <select
+        {/* <select
           className="sort-select"
           value={sortBy}
           onChange={e => setSortBy(e.target.value)}
         >
           <option value="">Sort by</option>
-          <option value="price-high">Price (Low to High)</option>
-          <option value="price-low">Price (High to Low)</option>
-        </select>
+          <option value="price">Price (Low to High)</option>
+          <option value="name">Price (High to Low)</option>
+        </select> */}
       </div>
     <h2 className="page-title">Non Veg Pickles</h2>
      {loading ? <p>Loading...</p> :  <div className="product-list">

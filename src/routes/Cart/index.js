@@ -2,17 +2,12 @@ import React, { useContext, useState} from 'react'
 import './index.css'
 import CartContext from '../../context/CartContext'
 
-const dummyCartItems = [
-  { id: 1, name: 'Mango Pickle', price: 120, quantity: 2 },
-  { id: 2, name: 'Garlic Pickle', price: 100, quantity: 1 },
-]
-
 function Cart() {
-  const [cartItems, setCartItems] = useState(dummyCartItems)
-  const{cart} = useContext(CartContext)
-  console.log(cart)
+  const{cart,setCart} = useContext(CartContext)
+  // const [cartItems, setCartItems] = useState(cart)
+  
   const updateQuantity = (id, amount) => {
-    setCartItems(prev =>
+    setCart(prev =>
       prev.map(item =>
         item.id === id
           ? { ...item, quantity: Math.max(1, item.quantity + amount) }
@@ -22,10 +17,10 @@ function Cart() {
   }
 
   const removeItem = id => {
-    setCartItems(prev => prev.filter(item => item.id !== id))
+    setCart(prev => prev.filter(item => item.id !== id))
   }
 
-  const subtotal = cartItems.reduce(
+  const subtotal = cart.reduce(
     (total, item) => total + item.price * item.quantity,
     0
   )
@@ -33,13 +28,14 @@ function Cart() {
   return (
     <div className="cart-container">
       <h2 className="cart-title">Your Cart</h2>
-      {cartItems.length === 0 ? (
+      {cart.length === 0 ? (
         <p className="empty">Your cart is empty.</p>
       ) : (
         <>
           <ul className="cart-list">
-            {cartItems.map(item => (
+            {cart.map(item => (
               <li key={item.id} className="cart-item">
+                <img src={item.image} alt={item.name} className='cart-item-image'/>
                 <div>
                   <h4>{item.name}</h4>
                   <p>₹{item.price} x {item.quantity}</p>

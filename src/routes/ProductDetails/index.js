@@ -1,12 +1,18 @@
 import React, { useEffect, useState ,useContext} from 'react'
 import { useParams } from 'react-router-dom'
 import CartContext from '../../context/CartContext'
+
+import { useSnackbar } from 'notistack';
+
 import './index.css'
 
 function ProductDetails() {
   const { id } = useParams()
   const [product, setProduct] = useState(null)
   const {setCart} = useContext(CartContext)
+
+  const { enqueueSnackbar } = useSnackbar();
+
   console.log(product)
   useEffect(() => {
     // Simulate fetching product by ID
@@ -22,9 +28,14 @@ function ProductDetails() {
   }, [id])
 
   const handleAddToCart = () => {
-    alert(`Added ${product.name} to cart!`)
-    // Hook this into cart logic
+    const audio = new Audio('/popbuble.wav')  // if inside public folder
+    audio.volume = 0.2
+    audio.play()
+
+    enqueueSnackbar(`${product.name} added to cart successfully!`, { variant: 'success' });
+    setCart(prevCart => [...prevCart, product]);
   }
+  
 
   if (!product) return <p>Loading...</p>
 

@@ -7,11 +7,13 @@ import Cart from "./routes/Cart";
 import Footer from "./components/Footer";
 import "./App.css";
 import ProductDetails from './routes/ProductDetails';
+import { SnackbarProvider } from 'notistack';
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+      <SnackbarProvider maxSnack={3} anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}>
       <Navbar/>
         <Routes>
            <Route path="/" element={<Home/>}/>
@@ -19,6 +21,7 @@ function App() {
            <Route path="/products/:id" element={<ProductDetails/>}/>
            <Route path="/cart" element={<Cart/>}/>
         </Routes>
+        </SnackbarProvider>
       </BrowserRouter>
       <Footer/>
     </div>
