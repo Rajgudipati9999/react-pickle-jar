@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useContext, useState} from 'react'
 import './index.css'
+import CartContext from '../../context/CartContext'
 
 const dummyCartItems = [
   { id: 1, name: 'Mango Pickle', price: 120, quantity: 2 },
@@ -8,7 +9,8 @@ const dummyCartItems = [
 
 function Cart() {
   const [cartItems, setCartItems] = useState(dummyCartItems)
-
+  const{cart} = useContext(CartContext)
+  console.log(cart)
   const updateQuantity = (id, amount) => {
     setCartItems(prev =>
       prev.map(item =>
