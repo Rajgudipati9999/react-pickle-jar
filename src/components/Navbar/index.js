@@ -11,7 +11,7 @@ function Navbar() {
   return (
     <nav className="navbar">
       <Link to='/'>
-         <img src="refinedlogo.png" alt="logo" className="navbar-logo" />
+         <img src="https://res.cloudinary.com/dx8rhno8y/image/upload/v1744713607/refinedlogo_w4aebv.png" alt="logo" className="navbar-logo" />
      </Link>
       <ul className="navbar-links">
         <li>

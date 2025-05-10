@@ -3,10 +3,10 @@ import './index.css'
 
 function Footer() {
   return (
-    <footer className="footer">
+    <div className="footer">
       <div className="footer-content">
         <div className="footer-brand">
-          <img src="refinedlogo.png" alt='logo' className='navbar-logo'/>
+          <img src="https://res.cloudinary.com/dx8rhno8y/image/upload/v1744713607/refinedlogo_w4aebv.png" alt='logo' className='navbar-logo'/>
           <p>Delicious homemade pickles delivered to your door.</p>
         </div>
 
@@ -30,7 +30,7 @@ function Footer() {
       <div className="footer-bottom">
         <p>© {new Date().getFullYear()} Pickle Jar. All rights reserved.</p>
       </div>
-    </footer>
+    </div>
   )
 }
 

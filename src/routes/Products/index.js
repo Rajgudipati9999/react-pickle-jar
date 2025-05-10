@@ -1,5 +1,8 @@
 import React, { useState,useEffect} from 'react'
 import ProductCard from '../../components/ProductCard'
+import Navbar from '../../components/Navbar'
+import Footer from '../../components/Footer'
+
 import './index.css'
 import { FaSearch } from 'react-icons/fa'
 
@@ -42,6 +45,8 @@ function Products() {
     // })
 
   return (
+    <>
+    <Navbar/>
     <div className="products-page">
       <div className="controls">
         <div className="search-bar">
@@ -71,6 +76,8 @@ function Products() {
         ))}
       </div>}
     </div>
+    <Footer/>
+    </>
   )
 }
 

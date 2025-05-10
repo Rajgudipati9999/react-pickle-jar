@@ -1,6 +1,8 @@
 import React, { useContext, useState} from 'react'
 import './index.css'
 import CartContext from '../../context/CartContext'
+import Navbar from '../../components/Navbar'
+import Footer from '../../components/Footer'
 
 function Cart() {
   const{cart,setCart} = useContext(CartContext)
@@ -26,6 +28,8 @@ function Cart() {
   )
 
   return (
+    <>
+    <Navbar/>
     <div className="cart-container">
       <h2 className="cart-title">Your Cart</h2>
       {cart.length === 0 ? (
@@ -56,6 +60,8 @@ function Cart() {
         </>
       )}
     </div>
+    <Footer/>
+    </>
   )
 }
 

@@ -1,10 +1,10 @@
 // import logo from './logo.svg';
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
-import Navbar from "./components/Navbar";
+// import Navbar from "./components/Navbar";
 import Home from "./routes/Home";
 import Products from "./routes/Products";
 import Cart from "./routes/Cart";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 import "./App.css";
 import ProductDetails from './routes/ProductDetails';
 import { SnackbarProvider } from 'notistack';
@@ -14,7 +14,6 @@ function App() {
     <div className="App">
       <BrowserRouter>
       <SnackbarProvider maxSnack={3} anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}>
-      <Navbar/>
         <Routes>
            <Route path="/" element={<Home/>}/>
            <Route path="/products" element={<Products/>}/>
@@ -23,7 +22,7 @@ function App() {
         </Routes>
         </SnackbarProvider>
       </BrowserRouter>
-      <Footer/>
+      {/* <Footer/> */}
     </div>
   );
 }
