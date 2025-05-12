@@ -9,7 +9,14 @@
   color: #2f6f2f;
   margin-bottom: 1rem;
 }
+.product-list-container {
+  list-style-type: none;
+  padding-left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
+}
 .controls {
   display: flex;
   flex-direction: row;
@@ -29,6 +36,7 @@
 }
 
 .search-bar {
+
   position: relative;
   animation: slideIn 0.4s ease-in-out;
 }
@@ -46,6 +54,30 @@
   left: 12px;
   transform: translateY(-50%);
   color: #3e9443;
+}
+.product-tabs {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.tab-button {
+  padding: 10px 16px;
+  border: none;
+  background-color: #f3f3f3;
+  cursor: pointer;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.tab-button.active {
+  background-color:#3e9443;
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .sort-select {

@@ -9,10 +9,12 @@ import { FaSearch } from 'react-icons/fa'
 function Products() {
   const [searchTerm, setSearchTerm] = useState('')
   const [sortBy, setSortBy] = useState('')
+  const [activeTab, setActiveTab] = useState('All Products');
+
 
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  
+  console.log(products)
   useEffect(() => {
     // Replace with your actual API URL
     const fetchProducts = async () => {
@@ -34,15 +36,12 @@ function Products() {
   }, []);
 
 
-  const filteredProducts = products
-    .filter(product =>
-      product.name.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-    // .sort((a, b) => {
-    //   if (sortBy === 'price') return a.price - b.price
-    //   if (sortBy === 'name') return a.price - b.price
-    //   return 0
-    // })
+ const filteredProducts = products
+  .filter(product =>
+    product.name.toLowerCase().includes(searchTerm.toLowerCase())
+  )
+  .filter(product => product.category === activeTab)
+
 
   return (
     <>
@@ -50,6 +49,7 @@ function Products() {
     <div className="products-page">
       <div className="controls">
         <div className="search-bar">
+          <>
           <FaSearch className="search-icon" />
           <input
             type="text"
@@ -57,6 +57,7 @@ function Products() {
             value={searchTerm}
             onChange={e => setSearchTerm(e.target.value)}
           />
+          </>
         </div>
 
         {/* <select
@@ -69,12 +70,38 @@ function Products() {
           <option value="name">Price (High to Low)</option>
         </select> */}
       </div>
-    <h2 className="page-title">Non Veg Pickles</h2>
-     {loading ? <p>Loading...</p> :  <div className="product-list">
-        {filteredProducts.map(product => (
+    <div className="product-tabs">
+  {['All Products', 'veg', 'non-veg', 'snacks', 'sweets'].map(tab => (
+    <button
+      key={tab}
+      className={`tab-button ${activeTab === tab ? 'active' : ''}`}
+      onClick={() => setActiveTab(tab)}
+    >
+      {tab === 'All Products' && 'All Products'}
+      {tab === 'veg' && 'Veg Pickles'}
+      {tab === 'non-veg' && 'Non-Veg Pickles'}
+      {tab === 'snacks' && 'Snacks'}
+      {tab === 'sweets' && 'Sweets'}
+    </button>
+  ))}
+</div>
+    <ul className="product-list-container">
+     {loading ? (
+  <p style={{ textAlign: 'center' }}>Loading...</p>
+) : (
+  <>
+    <div className="product-list">
+      {products.length > 0 ? (
+        products.map(product => (
           <ProductCard key={product.id} product={product} />
-        ))}
-      </div>}
+        ))
+      ) : (
+        <p style={{ textAlign: 'center' }}>No products found.</p>
+      )}
+    </div>
+  </>
+)}
+      </ul>
     </div>
     <Footer/>
     </>
