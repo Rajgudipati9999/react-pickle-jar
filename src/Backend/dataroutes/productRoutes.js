@@ -2,12 +2,12 @@ const express = require('express')
 const router = express.Router()
 const products = require('../data/products')
 
-// GET all products
+
 router.get('/', (req, res) => {
   res.json(products)
 })
 
-// GET a single product by ID
+
 router.get('/:id', (req, res) => {
   const { id } = req.params
   const product = products.find(p => p.id === id)
@@ -16,5 +16,4 @@ router.get('/:id', (req, res) => {
   }
   res.json(product)
 })
-
-module.exports = router
+module.exports = router;
