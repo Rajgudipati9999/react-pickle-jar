@@ -18,7 +18,7 @@ function Home() {
   //   return navigate('/products')
   // }
   return (
-  <>
+  <div>
    <Navbar/>
     <div className="home-container">
       <div className="home-banner">
@@ -35,7 +35,7 @@ function Home() {
       </div> */}
     </div>
     <Footer/>
-  </>
+  </div>
   );
 }
 

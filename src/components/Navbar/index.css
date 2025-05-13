@@ -1,5 +1,4 @@
 .navbar {
-  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -7,6 +6,11 @@
   border-bottom: 1px solid #c8e6c9;
 }
 
+@media screen and (max-width:768px) {
+  .navbar {
+    width: 100%;
+  }
+}
 .navbar-logo {
   height: 50px;
 }

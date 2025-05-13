@@ -80,11 +80,10 @@ function Products() {
           ))}
         </div>
 
-        <ul className="product-list-container">
           {loading ? (
             <p style={{ textAlign: "center" }}>Loading...</p>
           ) : (
-            <div className="product-list">
+            <ul className="product-list">
               {filteredProducts.length > 0 ? (
                 filteredProducts.map((product) => (
                   <ProductCard key={product.id} product={product} />
@@ -101,9 +100,8 @@ function Products() {
                   No products found.
                 </p>
               )}
-            </div>
+            </ul>
           )}
-        </ul>
       </div>
       <Footer />
     </>

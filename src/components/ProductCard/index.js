@@ -3,6 +3,7 @@ import "./index.css";
 
 function ProductCard({ product }) {
   return (
+  <li key={product.id}>
     <div className="product-card">
       <img src={product.image} alt={product.name} className="product-image" />
       <h3>{product.name}</h3>
@@ -11,6 +12,7 @@ function ProductCard({ product }) {
         View Details
       </Link>
     </div>
+  </li>
   );
 }
 

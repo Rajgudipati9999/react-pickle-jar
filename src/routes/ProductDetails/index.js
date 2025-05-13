@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import CartContext from "../../context/CartContext";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 
 import { useSnackbar } from "notistack";
 
@@ -30,7 +32,7 @@ function ProductDetails() {
   }, [id]);
 
   const handleAddToCart = () => {
-    const audio = new Audio("./popbuble.wav");
+    const audio = new Audio("/popbuble.wav");
     audio.volume = 0.5;
     audio.play();
 
@@ -43,20 +45,24 @@ function ProductDetails() {
   if (!product) return <p>Loading...</p>;
 
   return (
-    <div className="product-details-container">
-      <div className="product-image">
-        <img src={product.image} alt={product.name} />
-      </div>
+    <>
+      <Navbar />
+      <div className="product-details-container">
+        <div className="product-image">
+          <img src={product.image} alt={product.name} />
+        </div>
 
-      <div className="product-info">
-        <h2>{product.name}</h2>
-        <p className="description">{product.description}</p>
-        <p className="price">₹{product.price}</p>
-        <button className="add-to-cart-btn" onClick={handleAddToCart}>
-          Add to Cart
-        </button>
+        <div className="product-info">
+          <h2>{product.name}</h2>
+          <p className="description">{product.description}</p>
+          <p className="price">₹{product.price}</p>
+          <button className="add-to-cart-btn" onClick={handleAddToCart}>
+            Add to Cart
+          </button>
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 }
 

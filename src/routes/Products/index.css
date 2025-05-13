@@ -36,7 +36,7 @@
 }
 
 .search-bar {
-
+  align-self: center;
   position: relative;
   animation: slideIn 0.4s ease-in-out;
 }
@@ -87,11 +87,12 @@
   border: 1px solid #ccc;
   width: 200px;
 }
-
-.product-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
+.product-list{
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 @keyframes fadeIn {
