@@ -1,32 +1,27 @@
-import React, { useState,useEffect} from 'react'
-import ProductCard from '../../components/ProductCard'
-import Navbar from '../../components/Navbar'
-import Footer from '../../components/Footer'
-
-import './index.css'
-import { FaSearch } from 'react-icons/fa'
+import React, { useState, useEffect } from "react";
+import ProductCard from "../../components/ProductCard";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
+import "./index.css";
+import { FaSearch } from "react-icons/fa";
 
 function Products() {
-  const [searchTerm, setSearchTerm] = useState('')
-  const [sortBy, setSortBy] = useState('')
-  const [activeTab, setActiveTab] = useState('All Products');
-
-
-  const [products, setProducts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [activeTab, setActiveTab] = useState("All Products");
+  const [allProducts, setAllProducts] = useState({});
   const [loading, setLoading] = useState(true);
-  console.log(products)
+
   useEffect(() => {
-    // Replace with your actual API URL
     const fetchProducts = async () => {
       try {
-        const response = await fetch(`https://picklejar-backend.onrender.com/api/products`);
-        if (!response.ok) {
-          throw new Error("Failed to fetch products");
-        }
-        const data = await response.json();
-        setProducts(data);
+        const response = await fetch(
+          "https://picklejar-backend.onrender.com/api/products"
+        );
+        const json = await response.json();
+        const data = json.default || json;
+        setAllProducts(data);
       } catch (error) {
-        console.log("Error:", error.message);
+        console.error("Error fetching products:", error);
       } finally {
         setLoading(false);
       }
@@ -35,77 +30,84 @@ function Products() {
     fetchProducts();
   }, []);
 
+  const getFilteredProducts = () => {
+    const categories = Object.keys(allProducts);
 
- const filteredProducts = products
-  .filter(product =>
-    product.name.toLowerCase().includes(searchTerm.toLowerCase())
-  )
-  .filter(product => product.category === activeTab)
+    if (activeTab === "All Products") {
+      // Combine all category arrays
+      return categories.flatMap((category) =>
+        allProducts[category].filter((product) =>
+          product.name.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+      );
+    } else {
+      return (allProducts[activeTab] || []).filter((product) =>
+        product.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+  };
 
+  const filteredProducts = getFilteredProducts();
 
   return (
     <>
-    <Navbar/>
-    <div className="products-page">
-      <div className="controls">
-        <div className="search-bar">
-          <>
-          <FaSearch className="search-icon" />
-          <input
-            type="text"
-            placeholder="Search pickles..."
-            value={searchTerm}
-            onChange={e => setSearchTerm(e.target.value)}
-          />
-          </>
+      <Navbar />
+      <div className="products-page">
+        <div className="controls">
+          <div className="search-bar">
+            <FaSearch className="search-icon" />
+            <input
+              type="text"
+              placeholder="Search pickles..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
         </div>
 
-        {/* <select
-          className="sort-select"
-          value={sortBy}
-          onChange={e => setSortBy(e.target.value)}
-        >
-          <option value="">Sort by</option>
-          <option value="price">Price (Low to High)</option>
-          <option value="name">Price (High to Low)</option>
-        </select> */}
+        <div className="product-tabs">
+          {["All Products", "veg", "non-veg", "sweets"].map((tab) => (
+            <button
+              key={tab}
+              className={`tab-button ${activeTab === tab ? "active" : ""}`}
+              onClick={() => setActiveTab(tab)}
+            >
+              {tab === "All Products" && "All Products"}
+              {tab === "veg" && "Veg Pickles"}
+              {tab === "non-veg" && "Non-Veg Pickles"}
+              {tab === "sweets" && "Sweets"}
+            </button>
+          ))}
+        </div>
+
+        <ul className="product-list-container">
+          {loading ? (
+            <p style={{ textAlign: "center" }}>Loading...</p>
+          ) : (
+            <div className="product-list">
+              {filteredProducts.length > 0 ? (
+                filteredProducts.map((product) => (
+                  <ProductCard key={product.id} product={product} />
+                ))
+              ) : (
+                <p
+                  style={{
+                    textAlign: "center",
+                    color: "green",
+                    fontWeight: "bold",
+                    fontFamily: "ubuntu",
+                  }}
+                >
+                  No products found.
+                </p>
+              )}
+            </div>
+          )}
+        </ul>
       </div>
-    <div className="product-tabs">
-  {['All Products', 'veg', 'non-veg', 'snacks', 'sweets'].map(tab => (
-    <button
-      key={tab}
-      className={`tab-button ${activeTab === tab ? 'active' : ''}`}
-      onClick={() => setActiveTab(tab)}
-    >
-      {tab === 'All Products' && 'All Products'}
-      {tab === 'veg' && 'Veg Pickles'}
-      {tab === 'non-veg' && 'Non-Veg Pickles'}
-      {tab === 'snacks' && 'Snacks'}
-      {tab === 'sweets' && 'Sweets'}
-    </button>
-  ))}
-</div>
-    <ul className="product-list-container">
-     {loading ? (
-  <p style={{ textAlign: 'center' }}>Loading...</p>
-) : (
-  <>
-    <div className="product-list">
-      {products.length > 0 ? (
-        products.map(product => (
-          <ProductCard key={product.id} product={product} />
-        ))
-      ) : (
-        <p style={{ textAlign: 'center' }}>No products found.</p>
-      )}
-    </div>
-  </>
-)}
-      </ul>
-    </div>
-    <Footer/>
+      <Footer />
     </>
-  )
+  );
 }
 
-export default Products
+export default Products;
