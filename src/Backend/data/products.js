@@ -1,3 +1,10 @@
+<<<<<<< Updated upstream
+=======
+
+// import { v4 as uuidv4 } from 'uuid
+// 
+// 
+>>>>>>> Stashed changes
 const products = {
   'non-veg': [
     {
