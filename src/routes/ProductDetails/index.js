@@ -58,7 +58,7 @@ function ProductDetails() {
 
   if (!product)
     return (
-      <div className="loader-conatiner">
+      <div className="product-detail-loader-conatiner">
         <Oval
           visible={true}
           height="80"

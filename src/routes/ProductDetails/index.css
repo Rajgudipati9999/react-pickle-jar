@@ -10,13 +10,17 @@
     /* max-width: 1000px; */
     margin: 2rem auto;
   }
-  
+  .product-detail-loader-conatiner{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .product-image img {
     max-width: 300px;
     border-radius: 10px;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
   }
-  
   .product-info {
     flex: 1;
     display: flex;

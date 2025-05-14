@@ -105,7 +105,6 @@ function Products() {
                     textAlign: "center",
                     color: "green",
                     fontWeight: "bold",
-                    fontFamily: "ubuntu",
                   }}
                 >
                   No products found.
