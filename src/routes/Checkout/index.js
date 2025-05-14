@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import Navbar from '../../components/Navbar'
+import Footer from '../../components/Footer'
 import './index.css'
 
 function Checkout() {
@@ -23,6 +25,8 @@ function Checkout() {
   const dummyTotal = 340 // Replace with real total
 
   return (
+  <>
+  <Navbar/>
     <div className="checkout-container">
       <h2>Checkout</h2>
       <div className="checkout-grid">
@@ -80,6 +84,8 @@ function Checkout() {
         </div>
       </div>
     </div>
+    <Footer/>
+    </>
   )
 }
 

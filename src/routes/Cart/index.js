@@ -1,4 +1,5 @@
-import React, { useContext, useState} from 'react'
+import React, { useContext} from 'react'
+import { useNavigate } from 'react-router-dom'
 import './index.css'
 import CartContext from '../../context/CartContext'
 import Navbar from '../../components/Navbar'
@@ -7,6 +8,7 @@ import Footer from '../../components/Footer'
 function Cart() {
   const{cart,setCart} = useContext(CartContext)
   // const [cartItems, setCartItems] = useState(cart)
+  const navigate = useNavigate()
   
   const updateQuantity = (id, amount) => {
     setCart(prev =>
@@ -26,6 +28,10 @@ function Cart() {
     (total, item) => total + item.price * item.quantity,
     0
   )
+
+  const onCheckout = () => {
+    navigate('/checkout')
+  }
 
   return (
     <>
@@ -55,7 +61,7 @@ function Cart() {
           </ul>
           <div className="subtotal">
             <h3>Subtotal: ₹{subtotal}</h3>
-            <button className="checkout">Proceed to Checkout</button>
+            <button className="checkout" onClick={onCheckout}>Proceed to Checkout</button>
           </div>
         </>
       )}

@@ -8,6 +8,7 @@ import Cart from "./routes/Cart";
 import "./App.css";
 import ProductDetails from './routes/ProductDetails';
 import { SnackbarProvider } from 'notistack';
+import Checkout from './routes/Checkout'
 
 function App() {
   return (
@@ -19,10 +20,10 @@ function App() {
            <Route path="/products" element={<Products/>}/>
            <Route path="/products/:id" element={<ProductDetails/>}/>
            <Route path="/cart" element={<Cart/>}/>
+           <Route path='/checkout' element={<Checkout/>}/>
         </Routes>
         </SnackbarProvider>
       </BrowserRouter>
-      {/* <Footer/> */}
     </div>
   );
 }

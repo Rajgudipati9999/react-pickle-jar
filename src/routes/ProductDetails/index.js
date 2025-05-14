@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import CartContext from "../../context/CartContext";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import { Oval } from "react-loader-spinner";
 
 import { useSnackbar } from "notistack";
 
@@ -32,17 +33,43 @@ function ProductDetails() {
   }, [id]);
 
   const handleAddToCart = () => {
-    const audio = new Audio("/popbuble.wav");
+    const audio = new Audio(
+      "https://res.cloudinary.com/dx8rhno8y/video/upload/v1746968510/mixkit-soap-bubble-sound-2925_ri34uc.wav"
+    );
     audio.volume = 0.5;
     audio.play();
 
     enqueueSnackbar(`${product.name} added to cart successfully!`, {
       variant: "success",
     });
-    setCart((prevCart) => [...prevCart, product]);
+    setCart((prevCart) => {
+      const existingItem = prevCart.find((item) => item.id === product.id);
+      if (existingItem) {
+        return prevCart.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      } else {
+        return [...prevCart, { ...product, quantity: 1 }];
+      }
+    });
   };
 
-  if (!product) return <p>Loading...</p>;
+  if (!product)
+    return (
+      <div className="loader-conatiner">
+        <Oval
+          visible={true}
+          height="80"
+          width="80"
+          color="#4fa94d"
+          ariaLabel="oval-loading"
+          wrapperStyle={{}}
+          wrapperClass=""
+        />
+      </div>
+    );
 
   return (
     <>

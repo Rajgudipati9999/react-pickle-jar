@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ProductCard from "../../components/ProductCard";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import {Oval }from "react-loader-spinner"
 import "./index.css";
 import { FaSearch } from "react-icons/fa";
 
@@ -81,7 +82,17 @@ function Products() {
         </div>
 
           {loading ? (
-            <p style={{ textAlign: "center" }}>Loading...</p>
+            <div className="loading-container">
+             <Oval
+              visible={true}
+              height="80"
+              width="80"
+              color="#4fa94d"
+              ariaLabel="oval-loading"
+              wrapperStyle={{}}
+              wrapperClass=""
+              />
+              </div>
           ) : (
             <ul className="product-list">
               {filteredProducts.length > 0 ? (
