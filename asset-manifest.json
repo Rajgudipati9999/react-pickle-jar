@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/react-pickle-jar/static/css/main.a131b92e.css",
-    "main.js": "/react-pickle-jar/static/js/main.565a7d39.js",
+    "main.js": "/react-pickle-jar/static/js/main.f2955181.js",
     "static/js/453.07607954.chunk.js": "/react-pickle-jar/static/js/453.07607954.chunk.js",
     "index.html": "/react-pickle-jar/index.html",
     "main.a131b92e.css.map": "/react-pickle-jar/static/css/main.a131b92e.css.map",
-    "main.565a7d39.js.map": "/react-pickle-jar/static/js/main.565a7d39.js.map",
+    "main.f2955181.js.map": "/react-pickle-jar/static/js/main.f2955181.js.map",
     "453.07607954.chunk.js.map": "/react-pickle-jar/static/js/453.07607954.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a131b92e.css",
-    "static/js/main.565a7d39.js"
+    "static/js/main.f2955181.js"
   ]
 }
