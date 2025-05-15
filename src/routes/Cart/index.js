@@ -4,12 +4,15 @@ import './index.css'
 import CartContext from '../../context/CartContext'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
+import CheckoutContext from '../../context/CheckoutContext'
 
 function Cart() {
   const{cart,setCart} = useContext(CartContext)
   // const [cartItems, setCartItems] = useState(cart)
   const navigate = useNavigate()
   
+  const {setSubtotal} = useContext(CheckoutContext)
+
   const updateQuantity = (id, amount) => {
     setCart(prev =>
       prev.map(item =>
@@ -31,6 +34,7 @@ function Cart() {
 
   const onCheckout = () => {
     navigate('/checkout')
+    setSubtotal(subtotal)
   }
 
   return (

@@ -100,15 +100,9 @@ function Products() {
                   <ProductCard key={product.id} product={product} />
                 ))
               ) : (
-                <p
-                  style={{
-                    textAlign: "center",
-                    color: "green",
-                    fontWeight: "bold",
-                  }}
-                >
-                  No products found.
-                </p>
+                <div>
+                  <img src="https://res.cloudinary.com/dx8rhno8y/image/upload/v1747277590/9264822_qe7svf.jpg" alt="not found"/>
+                </div>
               )}
             </ul>
           )}

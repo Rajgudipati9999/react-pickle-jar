@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import './index.css'
+import CheckoutContext from '../../context/CheckoutContext'
 
 function Checkout() {
   const [formData, setFormData] = useState({
@@ -11,6 +12,11 @@ function Checkout() {
     postalCode: '',
     phone: '',
   })
+
+  const {subtotal} = useContext(CheckoutContext)
+  console.log(subtotal)
+
+  const grandTotal = subtotal + 40 ;
 
   const handleChange = e => {
     const { name, value } = e.target
@@ -22,7 +28,6 @@ function Checkout() {
     alert('Order placed successfully!')
   }
 
-  const dummyTotal = 340 // Replace with real total
 
   return (
   <>
@@ -77,10 +82,10 @@ function Checkout() {
 
         <div className="order-summary">
           <h3>Order Summary</h3>
-          <p>Items Total: ₹300</p>
+          <p>Items Total: {subtotal}</p>
           <p>Shipping: ₹40</p>
           <hr />
-          <h4>Total: ₹{dummyTotal}</h4>
+          <h4>Total: ₹{grandTotal}</h4>
         </div>
       </div>
     </div>
