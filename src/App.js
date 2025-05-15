@@ -13,7 +13,7 @@ import Checkout from './routes/Checkout'
 function App() {
   return (
     <div className="App">
-      <BrowserRouter basename="/react-pickle-jar"> 
+      <BrowserRouter> 
       <SnackbarProvider maxSnack={3} anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}>
         <Routes>
            <Route path="/" element={<Home/>}/>
