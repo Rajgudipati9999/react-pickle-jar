@@ -100,8 +100,8 @@ function Products() {
                   <ProductCard key={product.id} product={product} />
                 ))
               ) : (
-                <div>
-                  <img src="https://res.cloudinary.com/dx8rhno8y/image/upload/v1747277590/9264822_qe7svf.jpg" alt="not found"/>
+                <div className="not-found-container">
+                  <img className="not-found-img" src="https://res.cloudinary.com/dx8rhno8y/image/upload/v1747277590/9264822_qe7svf.jpg" alt="not found"/>
                 </div>
               )}
             </ul>

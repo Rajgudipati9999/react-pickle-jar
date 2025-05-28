@@ -1,4 +1,5 @@
 .products-page {
+  min-height: 100vh;
   padding-top: 2rem;
   background: #f9fff9;
   animation: fadeIn 0.5s ease-in-out;
@@ -89,7 +90,15 @@
   display: flex;
   flex-wrap: wrap;
 }
-
+.not-found-container {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.not-found-img {
+  width:50vw;
+}
 @media screen and (min-width : 768px) {
   .product-list {
     justify-content: center;
